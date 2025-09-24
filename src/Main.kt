@@ -125,12 +125,143 @@ fun main(){
     println(++x)
 
 
-    val isActive = true
+    val isActive = false
 
     if(isActive){
-        println("Hallo! Ich bin Vrushabh")
+        println("Hallo! Ich heiße Vrushabh")
+    }else{
+        println("youre not a vrushabh")
+    }
+
+    println("Enter the no to check:")
+    val myNumber = readLine()?.toIntOrNull()
+    if (myNumber != null) {
+        if(myNumber <= 100){
+            println("Valid marks")
+            println("you got $myNumber marks ")
+        }else if(myNumber != 150 ){
+            println("Ther number is not equal to 150")
+        }else{
+            println("the num is greater than 100 ")
+        }
+    }else{
+        println("the no is null")
+    }
+
+//    •	readLine() returns a String? (nullable string). That means it might give you:
+//    •	The text the user typed
+//    •	Or null (for example, if input stream is closed)
+//    •	By writing ?.toIntOrNull(), you’re saying:
+//    •	“If readLine() gave me a non-null string, try to convert it to an Int.”
+//    •	“If readLine() gave me null, just skip the conversion and keep the result as null.”
+//
+//    So, without the ?, you’d risk a NullPointerException if readLine() was null. With the ?, Kotlin safely avoids that.
+
+    val isA = false
+
+    if(!isA){
+        println("the val is false ")
+    }else{
+        println("the val is true")
     }
 
 
+    val active = true
+     val score = 90
 
+    if (active && (score == 90))
+        println("Game is active and the score is 90")
+    else if (active || (score == 90))
+        println("Game is active or the score is 90 or the both can be also true")
+
+
+
+    //To avoid the null pointer exception kotlin has beutifully managed it by the quesion mark like below
+    var str:String? = "something"
+    //now this something should not be null but if we add the question mark then it can be null also
+    var str12:String? = "something 1 "
+    //just like this
+    if(str12 != null){
+        println(str12.length)
+    }else{
+        println("the str12 is null")
+    }
+
+    //And the shorter way to implement the safe call operator is to
+
+    // this is the opearing as the if the str is null then print or say null if not so then only try to print the output
+    println(str?.length)// this is the equivalet to the if stmt that we have previously to check whether the str is null of not
+
+
+//    val ws:String? = null
+//    println(ws!!.length)
+    // this above line of code is saying that if the str is null then throw the exception and if not so then print the output
+
+
+    var text1:String? = null
+    var text2 = text1 ?: "Something new"
+    //If this var text1 is null then assign the "something new " to it(text2) and if not so
+    // then assign the text1 value to the text2
+
+    println(text2)
+    println(text2.length)
+
+    // the longer way to doing the same thing is
+
+    if(text1 != null){
+        text2= text1
+    }else{
+        text2 = "Something new"
+    }
+    println(text2)
+    println(text2.length)
+
+    sayHello("Vrushabh", 19)
+    val hasInternetConnection = false
+
+    if(hasInternetConnection){
+        getData("hello data is here")
+    }else{
+        showMsg()
+    }
+
+    val max = getMax(10,10)
+    if (max!= null)
+        println("The max of two nos is : $max")
+    else println("both are the same")
+
+
+
+
+    defParaExamFun("Vrushabh"," la al lala ajdfajdofasojfasdi")
+    defParaExamFun()
+}
+fun sayHello(name: String, age:Int){
+    println("Hello, $name! You're age is $age")
+}
+fun getData(data:String){
+    println("You're data is : $data")
+}
+fun showMsg(){
+    println("There is no internet connection")
+}
+
+fun getMax(a:Int, b:Int) :Int?{
+//    if (a>b){
+//        println("A is the greatest")
+//    }else if (b>a){
+//        println("B is the greatest")
+//    }else{
+//        println("Both must be the same")
+//    }
+//    val max: Int? = if (a>b) a else if (b>a) b else null
+//    return max
+    return if (a>b) a else if (b>a) b else null
+}
+
+//this is the shorter way to return the funtion values like this direcly writing equal to and then write what you want to return
+fun getMin(a:Int, b:Int):Int? = if (a<b) a else if (b<a) b else null
+
+fun defParaExamFun(name: String = "ritu", msg: String="hello how are you"){
+    println("Hello $name. This is the msg for you: $msg")
 }
